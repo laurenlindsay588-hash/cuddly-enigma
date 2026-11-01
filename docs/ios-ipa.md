@@ -5,22 +5,22 @@ https://hushpaid.netlify.app using bundled web assets. `npm run ios:ipa` builds
 those assets, syncs the iOS project, archives a **Release device build** with
 Xcode, and packages an IPA. It does not deploy or add an API.
 
-## Version 3.2 and ESign
+## Version 5.1.13 and ESign
 
-The package version is 3.2.0 and both iOS build configurations use marketing
-version **3.2**. This release adds the refreshed interface, phone bottom
-navigation, a local focus timer, and a local scratchpad. It adds no backend.
+The package version is 5.1.13 and both iOS build configurations use marketing
+version **5.1.13**. This release adds a Chrome-style settings page, backup and
+restore, a local focus timer, and a local scratchpad. It adds no backend.
 
-To get this version, open the **Build iOS IPA** run for the exact 3.2 commit.
-A successful run exposes a **Download hush 3.2 IPA and checksum** link in its
-summary and the `hush-ios-3.2-unsigned-<run number>` artifact. GitHub sign-in and
+To get this version, open the **Build iOS IPA** run for the exact 5.1.13 commit.
+A successful run exposes a **Download hush 5.1.13 IPA and checksum** link in its
+summary and the `hush-ios-5.1.13-unsigned-<run number>` artifact. GitHub sign-in and
 repository access may be required; artifacts expire after 14 days. Extract the
 ZIP, check `hush-unsigned.ipa.sha256`, and import `hush-unsigned.ipa` from Files
 into ESign for signing with your own certificate and matching profile. No signing
 credentials are needed by the unsigned build workflow.
 
-The older verified artifact documented below is **version 1.0, not 3.2**.
-A new 3.2 IPA is available only after its macOS device build succeeds. The local
+The older verified artifact documented below is **version 1.0, not 5.1.13**.
+A new 5.1.13 IPA is available only after its macOS device build succeeds. The local
 Linux environment can build and sync the web assets but cannot run Xcode or the
 iOS SDK; `npm run ios:ipa` reports that requirement. Never rename an older IPA or
 package web assets alone as a new device build. ESign installation and native
@@ -33,7 +33,7 @@ requests and can be started manually from Actions. It uses macOS 15, Xcode 26.0,
 Node 22, and the lockfile. The shared `App` scheme supports headless archives.
 
 By default, it creates `hush-unsigned.ipa` and a SHA-256 checksum in the run's
-`hush-ios-3.2-unsigned-<run number>` artifact. Download and unzip that artifact from
+`hush-ios-5.1.13-unsigned-<run number>` artifact. Download and unzip that artifact from
 the Actions run page; artifacts expire after 14 days. The IPA contains a device
 `Payload/App.app`, **not a simulator app**. It is unsigned and cannot be installed
 on an iPhone or submitted to App Store Connect until correctly signed and

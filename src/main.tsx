@@ -5,6 +5,7 @@ import { initializeNative } from './lib/native';
 import './styles/global.css';
 import './styles/browser.css';
 import './styles/release.css';
+import './styles/settings.css';
 
 initializeNative();
 

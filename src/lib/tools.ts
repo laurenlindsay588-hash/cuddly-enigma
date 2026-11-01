@@ -80,3 +80,8 @@ export function saveTool(key: string, value: string): boolean {
     return false;
   }
 }
+
+export function wordCount(text: string): number {
+  const words = text.trim().match(/\S+/g);
+  return words ? words.length : 0;
+}

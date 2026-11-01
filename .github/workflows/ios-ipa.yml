@@ -96,7 +96,7 @@ jobs:
         id: ipa
         uses: actions/upload-artifact@v4
         with:
-          name: hush-ios-3.2-${{ env.IPA_MODE }}-${{ github.run_number }}
+          name: hush-ios-5.1.13-${{ env.IPA_MODE }}-${{ github.run_number }}
           path: |
             ios/App/output/${{ env.IPA_MODE }}/*.ipa
             ios/App/output/${{ env.IPA_MODE }}/*.sha256
@@ -112,7 +112,7 @@ jobs:
           else
             echo 'Signed IPA exported for the selected distribution method. No upload or publication was performed.' >> "$GITHUB_STEP_SUMMARY"
           fi
-          echo "[Download hush 3.2 IPA and checksum]($IPA_ARTIFACT_URL) (GitHub sign-in required)." >> "$GITHUB_STEP_SUMMARY"
+          echo "[Download hush 5.1.13 IPA and checksum]($IPA_ARTIFACT_URL) (GitHub sign-in required)." >> "$GITHUB_STEP_SUMMARY"
           echo "Commit: $GITHUB_SHA; build: $IOS_BUILD_NUMBER. Download the IPA and SHA-256 checksum from this run’s artifacts (retained 14 days)." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Remove signing credentials
