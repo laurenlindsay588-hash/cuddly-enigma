@@ -12,10 +12,10 @@ version **5.1.13**. This release adds a Chrome-style settings page, backup and
 restore, a local focus timer, and a local scratchpad. It adds no backend.
 
 To get this version, open the **Build iOS IPA** run for the exact 5.1.13 commit.
-A successful run exposes a **Download hush 5.1.13 IPA and checksum** link in its
+A successful run exposes a **Download hush 5.1.13 IPA** link in its
 summary and the `hush-ios-5.1.13-unsigned-<run number>` artifact. GitHub sign-in and
 repository access may be required; artifacts expire after 14 days. Extract the
-ZIP, check `hush-unsigned.ipa.sha256`, and import `hush-unsigned.ipa` from Files
+ZIP and import `hush-unsigned.ipa` from Files
 into ESign for signing with your own certificate and matching profile. No signing
 credentials are needed by the unsigned build workflow.
 
@@ -32,7 +32,7 @@ The **Build iOS IPA** workflow (`.github/workflows/ios-ipa.yml`) runs on pull
 requests and can be started manually from Actions. It uses macOS 15, Xcode 26.0,
 Node 22, and the lockfile. The shared `App` scheme supports headless archives.
 
-By default, it creates `hush-unsigned.ipa` and a SHA-256 checksum in the run's
+By default, it creates `hush-unsigned.ipa` in the run's
 `hush-ios-5.1.13-unsigned-<run number>` artifact. Download and unzip that artifact from
 the Actions run page; artifacts expire after 14 days. The IPA contains a device
 `Payload/App.app`, **not a simulator app**. It is unsigned and cannot be installed
@@ -65,7 +65,7 @@ The workflow imports credentials into a temporary keychain, checks the profile's
 team, bundle ID, and expiry, and removes signing files and the keychain even if
 building fails. Pull requests never import signing credentials. A signed run
 fails if required secrets are missing; it does not substitute an unsigned IPA.
-Only IPA files and checksums are uploaded. The workflow uses its run number as
+Only IPA files are uploaded. The workflow uses its run number as
 the app build number; use a number greater than any previously uploaded version
 when uploading to App Store Connect.
 
@@ -81,7 +81,7 @@ Node 22.18+. The existing Swift Package Manager setup requires no CocoaPods.
 ```sh
 npm ci
 npm run ios:ipa
-# Output: ios/App/output/unsigned/hush-unsigned.ipa and .ipa.sha256
+# Output: ios/App/output/unsigned/hush-unsigned.ipa
 ```
 
 For a signed local build, first import the distribution certificate/private key
@@ -93,7 +93,7 @@ export IOS_PROFILE_UUID=YOUR_INSTALLED_PROFILE_UUID
 export IOS_EXPORT_METHOD=release-testing # or app-store-connect
 export IOS_BUILD_NUMBER=1 # choose an unused number for App Store Connect
 npm run ios:ipa -- signed
-# Output: ios/App/output/signed/hush-signed.ipa and .ipa.sha256
+# Output: ios/App/output/signed/hush-signed.ipa
 ```
 
 Archives and export metadata stay under the ignored `ios/App/output/` directory.

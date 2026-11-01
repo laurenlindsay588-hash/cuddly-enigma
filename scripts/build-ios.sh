@@ -69,5 +69,4 @@ fi
 
 test -s "$output/hush-$mode.ipa"
 unzip -t "$output/hush-$mode.ipa"
-(cd "$output" && shasum -a 256 "hush-$mode.ipa" > "hush-$mode.ipa.sha256")
 echo "Created $output/hush-$mode.ipa ($mode)"

@@ -73,7 +73,7 @@ data on the device. It uses a public Netlify catalog API with a bundled offline
 fallback. The website continues to work independently of the API.
 
 On macOS with Xcode 26+, run `npm run ios:ipa` to build an unsigned device IPA.
-The **Build iOS IPA** GitHub Actions workflow uploads an unsigned IPA and checksum
+The **Build iOS IPA** GitHub Actions workflow uploads an unsigned IPA
 on pull requests, and supports a manually requested signed export when Apple
 Developer credentials are configured. Unsigned IPAs require signing before device
 installation. See [IPA artifact setup](docs/ios-ipa.md) for downloads, signing
