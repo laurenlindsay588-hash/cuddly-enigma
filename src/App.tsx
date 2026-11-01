@@ -10,6 +10,7 @@ import {
   type HistoryEntry,
 } from './lib/history';
 import { Tools } from './components/Tools';
+import { appVersion } from './lib/version';
 import { NextUp } from './components/NextUp';
 import {
   discoverSites,
@@ -340,7 +341,7 @@ function App() {
             </nav>
             <span className="browser-wordmark">
               <img src="/app-icon.svg" alt="" width="20" height="20" /> hush
-              <span className="version-badge">3.2</span>
+              <span className="version-badge">{appVersion}</span>
             </span>
           </div>
           <div className="workspace-toolbar">
@@ -890,7 +891,7 @@ function App() {
           <footer className="page-footer">
             <span>Less looking. More living.</span>
             <span>
-              hush 3.2 · Made for your everyday internet{' '}
+              hush {appVersion} · Made for your everyday internet{' '}
               <span className="footer-spark">✳</span>
             </span>
           </footer>

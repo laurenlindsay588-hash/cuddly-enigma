@@ -1,4 +1,4 @@
-# hush 3.2
+# hush 5.1.13
 
 A responsive browser start page built with React, TypeScript, and Vite. Instagram, Facebook, YouTube, LinkedIn, Pinterest, and Reddit open their real websites in new tabs. No account or backend configuration is required.
 
@@ -19,6 +19,14 @@ The catalog includes 30 real destinations across Social, Entertainment, Work, Le
 **Next up** is a separate queue for websites you want to try. Use the Next up button on any card, including personal links. Add a next-step note (up to 240 characters), saved as you type. Opening a destination keeps it queued and follows the existing history setting. Done removes the entry and its note without changing favorites or history. Removing a personal link also removes its queue entry. The queue uses its own local storage key, `hush-next-up-v5`; it has no account, sync, or backend. When storage fails, the current visit still works and a notice explains that changes could not be saved.
 
 All destinations open individually in new tabs. External services may offer accounts or paid plans; hush does not subscribe to or integrate with them. Be mindful of what you upload to external tools.
+
+## Backup and restore
+
+**Settings → Backup** exports your links, favorites, Next up queue, history, settings, scratchpad, and timer to `hush-backup.json`. Importing a backup replaces the current data in this browser and reloads the page. Backups are plain text; avoid sharing files that contain private notes.
+
+## New in 5.1.13
+
+**Settings** now follows Chrome's layout: a sidebar (Appearance, Privacy and history, Backup and restore, About hush) beside row-based cards with toggle switches. All saved data keeps its storage format.
 
 ## New in 3.2
 

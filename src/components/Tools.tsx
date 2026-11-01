@@ -11,6 +11,7 @@ import {
   scratchpadKey,
   scratchpadLimit,
   toggleSession,
+  wordCount,
   type FocusSession,
 } from '../lib/tools';
 
@@ -64,6 +65,25 @@ export function Tools({ visible }: { visible: boolean }) {
         ? 'Saved on this device.'
         : 'For this visit only. This device could not save your note.',
     );
+  }
+
+  async function copyNote() {
+    try {
+      await navigator.clipboard.writeText(note);
+      setNoteStatus('Note copied to clipboard.');
+    } catch {
+      setNoteStatus('Could not copy. Select the text and copy it manually.');
+    }
+  }
+
+  function downloadNote() {
+    const url = URL.createObjectURL(new Blob([note], { type: 'text/plain' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'hush-note.txt';
+    link.click();
+    URL.revokeObjectURL(url);
+    setNoteStatus('Note downloaded as hush-note.txt.');
   }
 
   return (
@@ -187,9 +207,24 @@ export function Tools({ visible }: { visible: boolean }) {
           />
           <div className="scratchpad-meta">
             <span>
+              {wordCount(note).toLocaleString()} words ·{' '}
               {note.length.toLocaleString()} /{' '}
               {scratchpadLimit.toLocaleString()}
             </span>
+            <button
+              className="tool-secondary"
+              disabled={!note}
+              onClick={() => void copyNote()}
+            >
+              Copy
+            </button>
+            <button
+              className="tool-secondary"
+              disabled={!note}
+              onClick={downloadNote}
+            >
+              Download
+            </button>
             <button
               className="tool-secondary"
               disabled={!note}
