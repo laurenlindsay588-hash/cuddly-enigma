@@ -1,5 +1,5 @@
 """Exercise packaging and failure boundaries with fake Xcode, not native builds."""
-import hashlib
+
 import os
 from pathlib import Path
 import plistlib
@@ -65,14 +65,13 @@ else:
         return subprocess.run(['bash', 'scripts/build-ios.sh', mode], cwd=self.root,
                               env=self.env, capture_output=True, text=True)
 
-    def test_unsigned_device_payload_and_checksum(self):
+    def test_unsigned_device_payload(self):
         result = self.build()
         self.assertEqual(result.returncode, 0, result.stderr)
         ipa = self.root / 'ios/App/output/unsigned/hush-unsigned.ipa'
         with zipfile.ZipFile(ipa) as file:
             self.assertEqual(file.namelist(), ['Payload/App.app/App'])
-        digest = hashlib.sha256(ipa.read_bytes()).hexdigest()
-        self.assertEqual(Path(str(ipa) + '.sha256').read_text().split()[0], digest)
+        self.assertEqual(list(self.root.rglob('*.sha256')), [])
         calls = (self.root / 'calls.jsonl').read_text()
         self.assertIn('iphoneos', calls)
         self.assertIn('CODE_SIGNING_ALLOWED=NO', calls)
